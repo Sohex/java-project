@@ -2,7 +2,7 @@ pipeline {
 	agent none 
 
 	environment {
-		MAJOR_VERSION = 1
+		env.MAJOR_VERSION = 1
 	}
 
 	options {
@@ -84,7 +84,7 @@ pipeline {
 				sh 'git push origin master'
 				echo "Tagging the Release"
 				sh "git tag rectangle-${env.MAJOR_VERISION}.${env.BUILD_NUMBER}"
-				sh "pit push origin rectangle-${env.MAJOR_VERISION}.${env.BUILD_NUMBER}"
+				sh "git push origin rectangle-${env.MAJOR_VERISION}.${env.BUILD_NUMBER}"
 			}
 		}
 	}
