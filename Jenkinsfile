@@ -30,15 +30,15 @@ pipeline {
 			agent {label 'apache'}
 			steps {
 				sh "mkdir -p /var/www/html/rectangles/all/${env.BRANCH_NAME}"
-				sh "cp dist/rectangle_${env.BUILD_NUMBER}.jar /var/www/html/rectangles/all/${env.BRANCH_NAME}/"
+				sh "cp dist/rectangle_${env.CHANGE_ID}.jar /var/www/html/rectangles/all/${env.BRANCH_NAME}/"
 			}
 		}
 
 		stage('Running on CentOS') {
 			agent {label 'CentOS'}
 			steps {
-				sh "wget http://34.209.28.140/rectangles/all/${env.BRANCH_NAME}/rectangle_${env.BUILD_NUMBER}.jar"
-				sh "java -jar rectangle_${env.BUILD_NUMBER}.jar 3 4"
+				sh "wget http://34.209.28.140/rectangles/all/${env.BRANCH_NAME}/rectangle_${env.CHANGE_ID}.jar"
+				sh "java -jar rectangle_${env.CHANGE_ID}.jar 3 4"
 			}
 		}
 
@@ -47,8 +47,8 @@ pipeline {
 				docker 'openjdk:8u151-jre'
 			}
 			steps {
-				sh "wget http://34.209.28.140/rectangles/all/${env.BRANCH_NAME}/rectangle_${env.BUILD_NUMBER}.jar"
-                                sh "java -jar rectangle_${env.BUILD_NUMBER}.jar 3 4"
+				sh "wget http://34.209.28.140/rectangles/all/${env.BRANCH_NAME}/rectangle_${env.CHANGE_ID}.jar"
+                                sh "java -jar rectangle_${env.CHANGE_ID}.jar 3 4"
 			}
 		}
 
@@ -58,7 +58,7 @@ pipeline {
 				branch 'master'
 			}
 			steps {
-				sh "cp /var/www/html/rectangles/all/development/rectangle_${env.upstreamBuildNumber}.jar /var/www/html/rectangles/green/rectangle_${env.BUILD_NUMBER}.jar"
+				sh "cp /var/www/html/rectangles/all/development/rectangle_${env.CHANGE_ID}.jar /var/www/html/rectangles/green/rectangle_${env.CHANGE_ID}.jar"
 			}
 		}
 
