@@ -84,10 +84,8 @@ pipeline {
 				sh 'git push origin master'
 				echo "Tagging the Release"
 				sh 'printenv'
-				sh "echo ${env.MAJOR_VERSION}"
-				sh "echo ${MAJOR_VERSION}"
-				sh "git tag rectangle-${env.MAJOR_VERISION}.${env.BUILD_NUMBER}"
-				sh "git push origin rectangle-${env.MAJOR_VERISION}.${env.BUILD_NUMBER}"
+				sh "git tag rectangle-${env.MAJOR_VERSION}.${env.BUILD_NUMBER}"
+				sh "git push origin rectangle-${env.MAJOR_VERSION}.${env.BUILD_NUMBER}"
 			}
 		}
 	}
