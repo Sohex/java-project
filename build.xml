@@ -11,7 +11,7 @@
 
 	<path id="class.path">
 		<pathelement location="${build.dir}" />
-		<pathelement location="./lib/junit-4.12.jar" />
+		<pathelement location="./lib/junit-4.10.jar" />
 	</path>
 
 	<!-- Deletes the existing build, docs and dist directory-->
